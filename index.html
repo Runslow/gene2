@@ -52,37 +52,51 @@
         // start reading the file. When it is done, calls the onload event defined above.
         reader.readAsBinaryString(fileInput.files[0]);
 */
-    var lines = inputText.split('\n');
 
-    function getCsvValuesFromLine(line) {
-    var values = lines[0].split(',');
-    value = values.map(function(value){
-        return value.replace(/\"/g, '');
-    });
-    return values;
-
-
-    var machine = lines.map(function(line) {
-    var person = {},
-        lineValues = getCsvValuesFromLine(line);
-    for(var i = 0; i < lines.length; i += 1) {
-        person[i] = lineValues[i];
+  function Upload() {
+        var fileUpload = document.getElementById("fileUpload");
+        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
+        if (regex.test(fileUpload.value.toLowerCase())) {
+            if (typeof (FileReader) != "undefined") {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var table = document.createElement("table");
+                    var rows = e.target.result.split("\n");
+                    for (var i = 0; i < rows.length; i++) {
+                        var cells = rows[i].split(",");
+                        if (cells.length > 1) {
+                            var row = table.insertRow(-1);
+                            for (var j = 0; j < cells.length; j++) {
+                                var cell = row.insertCell(-1);
+                                cell.innerHTML = cells[j];
+                            }
+                        }
+                    }
+                    var dvCSV = document.getElementById("dvCSV");
+                    dvCSV.innerHTML = "";
+                    dvCSV.appendChild(table);
+                }
+                reader.readAsText(fileUpload.files[0]);
+            } else {
+                alert("This browser does not support HTML5.");
+            }
+        } else {
+            alert("Please upload a valid CSV file.");
+        }
     }
-    return person;
-});
-    };
 
-fileInput.addEventListener('change', readFile);
-    }
+
   </script>
 </head>
-<p>Select local CSV File2:</p>
-<input id="csv" type="file">
+<p>Select local CSV File:</p>
+<input type="file" id="fileUpload" />
+<input type="button" id="upload" value="Upload" onclick="Upload()" />
+<hr />
+<div id="dvCSV">
+</div>
+<p>
 
-<output id="person">
-    file contents will appear here
-
-</output>
+</p>
 <body>
   <div id="chart_div"></div>
 </body>
