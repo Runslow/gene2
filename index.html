@@ -41,7 +41,7 @@
       var chart = new google.visualization.Gantt(document.getElementById('chart_div'));
 
       chart.draw(otherData, options);
-
+/*
     var fileInput = document.getElementById("csv"),
 
     readFile = function () {
@@ -51,6 +51,25 @@
         };
         // start reading the file. When it is done, calls the onload event defined above.
         reader.readAsBinaryString(fileInput.files[0]);
+*/
+    var lines = inputText.split('\n');
+
+    function getCsvValuesFromLine(line) {
+    var values = lines[0].split(',');
+    value = values.map(function(value){
+        return value.replace(/\"/g, '');
+    });
+    return values;
+
+
+    var machine = lines.map(function(line) {
+    var person = {},
+        lineValues = getCsvValuesFromLine(line);
+    for(var i = 0; i < lines.length; i += 1) {
+        person[i] = lineValues[i];
+    }
+    return person;
+});
     };
 
 fileInput.addEventListener('change', readFile);
