@@ -18,10 +18,10 @@
     dataTable.addColumn({ type: 'string', id: 'Name' });
     dataTable.addColumn({ type: 'date', id: 'Start' });
     dataTable.addColumn({ type: 'date', id: 'End' });
-    ops = [[1, 2, 3],[2,1,3]];
+/*    ops = [[1, 2, 3],[2,1,3]];
     starts = [[0,5,10],[0,4,6]];
     runs = [[4,3,2],[2,2,2]];
-    joblen = 3;
+    joblen = 3;*/
     for (var i = 0; i < joblen ; i++) {
       for (var j = 0; j< starts[i].length; j++){
        dataTable.addRows([['Mach ' +ops[i][j], 'Job '+i, new Date(starts[i][j]), new Date(starts[i][j]) ]]); 
@@ -171,14 +171,14 @@
 </head>
 <p>Select Start Timess:</p>
 <input type="file" id="fileUpload" />
-<input type="button" id="upload" value="Upload" onclick="UploadS()" />
+<input type="button" id="uploads" value="Upload" onclick="UploadS()" />
 
 <p>Select Ops Times:</p>
 <input type="file" id="fileUpload" />
-<input type="button" id="upload" value="Upload" onclick="UploadO()" />
+<input type="button" id="uploado" value="Upload" onclick="UploadO()" />
 <p>Select Run Times:</p>
 <input type="file" id="fileUpload" />
-<input type="button" id="upload" value="Upload" onclick="UploadR()" />
+<input type="button" id="uploadr" value="Upload" onclick="UploadR()" />
 <hr />
 <div id="dvCSV">
 </div>
@@ -186,6 +186,7 @@
 
 </p>
 <body>
-  <div id="example3.1" style="height: 200px;"></div>
+  <input type="button" id="upload" value="DrawChart" onclick="DrawChart()" />
+  <div id="example3.1" style="height: 500px;"></div>
 </body>
 </html>
