@@ -23,7 +23,7 @@
     runs = [[4,3,2],[2,2,2]];
     joblen = 2;
     for (var i = 0; i < 2; i++) {
-      for (var j = 0; j< 2; j++){
+      for (var j = 0; j< joblen; j++){
        dataTable.addRows([['Mach ' +ops[i][j], 'Job '+i, new Date(starts[i][j]), new Date(starts[i][j]) ]]); 
       }
     }
