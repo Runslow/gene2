@@ -104,7 +104,7 @@
 */
 
   function UploadS() {
-        var fileUpload = document.getElementById("fileUpload");
+        var fileUpload = document.getElementById("fileUploadS");
         var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
         if (regex.test(fileUpload.value.toLowerCase())) {
             if (typeof (FileReader) != "undefined") {
@@ -137,7 +137,7 @@
         }
     }
     function UploadO() {
-        var fileUpload = document.getElementById("fileUpload");
+        var fileUpload = document.getElementById("fileUploadO");
         var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
         if (regex.test(fileUpload.value.toLowerCase())) {
             if (typeof (FileReader) != "undefined") {
@@ -171,7 +171,7 @@
     }
 
   function UploadR() {
-        var fileUpload = document.getElementById("fileUpload");
+        var fileUpload = document.getElementById("fileUploadR");
         var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
         if (regex.test(fileUpload.value.toLowerCase())) {
             if (typeof (FileReader) != "undefined") {
@@ -209,14 +209,14 @@
   </script>
 </head>
 <p>Select Start Timess:</p>
-<input type="file" id="fileUpload" />
+<input type="file" id="fileUploadS" />
 <input type="button" id="upload" value="Upload" onclick="UploadS()" />
 
 <p>Select Ops Times:</p>
-<input type="file" id="fileUpload" />
+<input type="file" id="fileUploadO" />
 <input type="button" id="upload" value="Upload" onclick="UploadO()" />
 <p>Select Run Times:</p>
-<input type="file" id="fileUpload" />
+<input type="file" id="fileUploadR" />
 <input type="button" id="upload" value="Upload" onclick="UploadR()" />
 <hr />
 <div id="dvCSV">
