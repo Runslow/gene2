@@ -65,6 +65,7 @@
                     var rows = e.target.result.split("\n");
                     for (var i = 0; i < rows.length; i++) {
                         var cells = rows[i].split(",");
+                        var dataset[i] = cells
                         if (cells.length > 1) {
                             var row = table.insertRow(-1);
                             for (var j = 0; j < cells.length; j++) {
@@ -84,6 +85,7 @@
         } else {
             alert("Please upload a valid CSV file.");
         }
+        return dataset
     }
 
 
@@ -100,7 +102,7 @@
 <input type="file" id="fileUpload" />
 <input type="button" id="upload" value="Upload" onclick="Upload()" />
 <hr />
-<div id="dvCSV">
+<div id="dataset">
 </div>
 <p>
 
