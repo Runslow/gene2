@@ -18,10 +18,10 @@
     dataTable.addColumn({ type: 'string', id: 'Name' });
     dataTable.addColumn({ type: 'date', id: 'Start' });
     dataTable.addColumn({ type: 'date', id: 'End' });
-/*    ops = [[1, 2, 3],[2,1,3]];
+    ops = [[1, 2, 3],[2,1,3]];
     starts = [[0,5,10],[0,4,6]];
     runs = [[4,3,2],[2,2,2]];
-    joblen = 3;*/
+    joblen = 3;
     for (var i = 0; i < joblen ; i++) {
       for (var j = 0; j< starts[i].length; j++){
        dataTable.addRows([['Mach ' +ops[i][j], 'Job '+i, new Date(starts[i][j]), new Date(starts[i][j]) ]]); 
