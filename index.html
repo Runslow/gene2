@@ -54,7 +54,7 @@
         reader.readAsBinaryString(fileInput.files[0]);
 */
 
-  function Upload() {
+  function UploadS() {
         var fileUpload = document.getElementById("fileUpload");
         var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
         if (regex.test(fileUpload.value.toLowerCase())) {
@@ -63,9 +63,10 @@
                 reader.onload = function (e) {
                     var table = document.createElement("table");
                     var rows = e.target.result.split("\n");
+                    var joblen = rows.length
                     for (var i = 0; i < rows.length; i++) {
                         var cells = rows[i].split(",");
-                        var dataset[i] = cells
+                        var starts[i] = cells
                         if (cells.length > 1) {
                             var row = table.insertRow(-1);
                             for (var j = 0; j < cells.length; j++) {
@@ -85,7 +86,8 @@
         } else {
             alert("Please upload a valid CSV file.");
         }
-        return dataset
+        return starts
+        return joblen
     }
 
 
@@ -102,7 +104,7 @@
 <input type="file" id="fileUpload" />
 <input type="button" id="upload" value="Upload" onclick="Upload()" />
 <hr />
-<div id="dataset">
+<div id="dvCSV">
 </div>
 <p>
 
