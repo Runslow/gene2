@@ -3,6 +3,10 @@
  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script type="text/javascript">
+  var joblen =0;
+  var ops=[[]];
+  var starts =[[]];
+  var runs =[[]];
   google.charts.load("current", {packages:["timeline"]});
   google.charts.setOnLoadCallback(drawChart);
   function drawChart() {
@@ -47,8 +51,7 @@
 */
     chart.draw(dataTable);
   }
-</script>
-<script type="text/javascript">
+
   /*
     var fileInput = document.getElementById("csv"),
 
@@ -70,10 +73,10 @@
                 reader.onload = function (e) {
                     var table = document.createElement("table");
                     var rows = e.target.result.split("\n");
-                    var joblen = rows.length
+                    joblen = rows.length
                     for (var i = 0; i < rows.length; i++) {
                         var cells = rows[i].split(",");
-                        var starts[i] = cells
+                        starts[i] = cells
                         if (cells.length > 1) {
                             var row = table.insertRow(-1);
                             for (var j = 0; j < cells.length; j++) {
@@ -93,8 +96,6 @@
         } else {
             alert("Please upload a valid CSV file.");
         }
-        return starts
-        return joblen
     }
     function UploadO() {
         var fileUpload = document.getElementById("fileUpload");
@@ -107,7 +108,7 @@
                     var rows = e.target.result.split("\n");
                     for (var i = 0; i < rows.length; i++) {
                         var cells = rows[i].split(",");
-                        var ops[i] = cells
+                        ops[i] = cells
                         if (cells.length > 1) {
                             var row = table.insertRow(-1);
                             for (var j = 0; j < cells.length; j++) {
@@ -141,7 +142,7 @@
                     var rows = e.target.result.split("\n");
                     for (var i = 0; i < rows.length; i++) {
                         var cells = rows[i].split(",");
-                        var runs[i] = cells
+                        runs[i] = cells
                         if (cells.length > 1) {
                             var row = table.insertRow(-1);
                             for (var j = 0; j < cells.length; j++) {
