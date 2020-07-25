@@ -24,7 +24,7 @@
     joblen = 2;
     for (var i = 0; i < joblen ; i++) {
       for (var j = 0; j< starts[i].length; j++){
-       dataTable.addRows([['Mach ' +ops[i][j], 'Job '+i, new Date(starts[i][j]), new Date(starts[i][j]) ]]); 
+       dataTable.addRows([['Mach ' +ops[i][j], 'Job '+i, new Date(starts[i][j]), new Date(starts[i][j] +runs[i][j])]]); 
       }
     }
      /* for (var i = 0; i < 3; i++) {
