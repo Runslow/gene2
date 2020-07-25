@@ -18,16 +18,16 @@
     starts = [[0,5,10],[0,4,6]];
     runs = [[4,3,2],[2,2,2]];
     joblen = 2;
-/*    for (var i = 0; i < 2; i++) {
+    for (var i = 0; i < 2; i++) {
       for (var j = 0; j< 2; j++){
-       dataTable.addRows([[ops[i][j], i, new Date(starts[i][j]), new Date(starts[i][j]) ]]); 
+       dataTable.addRows([['Mach ' +ops[i][j], 'Job '+i, new Date(starts[i][j]), new Date(starts[i][j]) ]]); 
       }
-    }*/
+    }
      /* for (var i = 0; i < 3; i++) {
         dataTable.addRows(['Mach' + i.toString, '2', new Date(0), new Date(1) ]);
      }*/
 
-    dataTable.addRows([
+/*    dataTable.addRows([
       [ 'President', 'George Washington', new Date(1789, 3, 30), new Date(1797, 2, 4) ],
       [ 'President', 'John Adams', new Date(1797, 2, 4), new Date(1801, 2, 4) ],
       [ 'President', 'Thomas Jefferson', new Date(1801, 2, 4), new Date(1809, 2, 4) ],
@@ -44,7 +44,7 @@
     for (var i = 0; i < 3; i++) {
       dataTable.addRows([['Mach' + i, 'm'+ ops[0][0], new Date(1800, 5, 13), new Date(1801, 2, 4) ]]);
      }
-
+*/
     chart.draw(dataTable);
   }
 </script>
