@@ -19,7 +19,7 @@
     runs = [[4,3,2],[2,2,2]];
     joblen = 2;
     for (var i = 0; i < joblen; i++) {
-      for (var j = 0; starts[i].length; j++){
+      for (var j = 0; j< starts[i].length; j++){
        dataTable.addRows([[ops[i][j], i, new Date(starts[i][j]), new Date(starts[i][j]+runs[i][j]) ]]); 
       }
     }
