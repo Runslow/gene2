@@ -12,6 +12,7 @@
     function drawChart() {
 
       var otherData = new google.visualization.DataTable();
+
       otherData.addColumn('string', 'Task ID');
       otherData.addColumn('string', 'Task Name');
       otherData.addColumn('string', 'Resource');
@@ -20,7 +21,9 @@
       otherData.addColumn('number', 'Duration');
       otherData.addColumn('number', 'Percent Complete');
       otherData.addColumn('string', 'Dependencies');
-
+      // for (var i =0; i <joblen; i++){
+        
+      // }
       otherData.addRows([
         ['toTrain', 'Walk to train stop', 'walk', null, null, toMilliseconds(5), 100, null],
         ['music', 'Listen to music', 'music', null, null, toMilliseconds(70), 100, null],
@@ -89,20 +92,88 @@
         return starts
         return joblen
     }
+    function UploadO() {
+        var fileUpload = document.getElementById("fileUpload");
+        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
+        if (regex.test(fileUpload.value.toLowerCase())) {
+            if (typeof (FileReader) != "undefined") {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var table = document.createElement("table");
+                    var rows = e.target.result.split("\n");
+                    for (var i = 0; i < rows.length; i++) {
+                        var cells = rows[i].split(",");
+                        var ops[i] = cells
+                        if (cells.length > 1) {
+                            var row = table.insertRow(-1);
+                            for (var j = 0; j < cells.length; j++) {
+                                var cell = row.insertCell(-1);
+                                cell.innerHTML = cells[j];
+                            }
+                        }
+                    }
+                    var dvCSV = document.getElementById("dvCSVo");
+                    dvCSV.innerHTML = "";
+                    dvCSV.appendChild(table);
+                }
+                reader.readAsText(fileUpload.files[0]);
+            } else {
+                alert("This browser does not support HTML5.");
+            }
+        } else {
+            alert("Please upload a valid CSV file.");
+        }
+        return ops
+    }
+
+  function UploadR() {
+        var fileUpload = document.getElementById("fileUpload");
+        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
+        if (regex.test(fileUpload.value.toLowerCase())) {
+            if (typeof (FileReader) != "undefined") {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var table = document.createElement("table");
+                    var rows = e.target.result.split("\n");
+                    for (var i = 0; i < rows.length; i++) {
+                        var cells = rows[i].split(",");
+                        var runs[i] = cells
+                        if (cells.length > 1) {
+                            var row = table.insertRow(-1);
+                            for (var j = 0; j < cells.length; j++) {
+                                var cell = row.insertCell(-1);
+                                cell.innerHTML = cells[j];
+                            }
+                        }
+                    }
+                    var dvCSV = document.getElementById("dvCSVr");
+                    dvCSV.innerHTML = "";
+                    dvCSV.appendChild(table);
+                }
+                reader.readAsText(fileUpload.files[0]);
+            } else {
+                alert("This browser does not support HTML5.");
+            }
+        } else {
+            alert("Please upload a valid CSV file.");
+        }
+        return rows
+    }
+
 
 
   </script>
 </head>
-<p>Select Start Times:</p>
+<p>Select Start Timess:</p>
 <input type="file" id="fileUpload" />
-<input type="button" id="upload" value="Upload" onclick="Upload()" />
+<input type="button" id="upload" value="Upload" onclick="UploadS()" />
 
 <p>Select Ops Times:</p>
 <input type="file" id="fileUpload" />
-<input type="button" id="upload" value="Upload" onclick="Upload()" />
+<input type="button" id="upload" value="Upload" onclick="UploadO()" />
 <p>Select Run Times:</p>
 <input type="file" id="fileUpload" />
-<input type="button" id="upload" value="Upload" onclick="Upload()" />
+<input type="button" id="upload" value="Upload" onclick="UploadR()" />
 <hr />
 <div id="dvCSV">
 </div>
