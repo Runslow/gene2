@@ -1,51 +1,42 @@
 <html>
 <head>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript">
-    google.charts.load('current', {'packages':['gantt']});
-    google.charts.setOnLoadCallback(drawChart);
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-    function toMilliseconds(minutes) {
-      return minutes * 60 * 1000;
-    }
+<script type="text/javascript">
+  google.charts.load("current", {packages:["timeline"]});
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
 
-    function drawChart() {
+    var container = document.getElementById('example3.1');
+    var chart = new google.visualization.Timeline(container);
+    var dataTable = new google.visualization.DataTable();
+    dataTable.addColumn({ type: 'string', id: 'Position' });
+    dataTable.addColumn({ type: 'string', id: 'Name' });
+    dataTable.addColumn({ type: 'date', id: 'Start' });
+    dataTable.addColumn({ type: 'date', id: 'End' });
+    dataTable.addRows([
+      [ 'President', 'George Washington', new Date(1789, 3, 30), new Date(1797, 2, 4) ],
+      [ 'President', 'John Adams', new Date(1797, 2, 4), new Date(1801, 2, 4) ],
+      [ 'President', 'Thomas Jefferson', new Date(1801, 2, 4), new Date(1809, 2, 4) ],
+      [ 'Vice President', 'John Adams', new Date(1789, 3, 21), new Date(1797, 2, 4)],
+      [ 'Vice President', 'Thomas Jefferson', new Date(1797, 2, 4), new Date(1801, 2, 4)],
+      [ 'Vice President', 'Aaron Burr', new Date(1801, 2, 4), new Date(1805, 2, 4)],
+      [ 'Vice President', 'George Clinton', new Date(1805, 2, 4), new Date(1812, 3, 20)],
+      [ 'Secretary of State', 'John Jay', new Date(1789, 8, 25), new Date(1790, 2, 22)],
+      [ 'Secretary of State', 'Thomas Jefferson', new Date(1790, 2, 22), new Date(1793, 11, 31)],
+      [ 'Secretary of State', 'Edmund Randolph', new Date(1794, 0, 2), new Date(1795, 7, 20)],
+      [ 'Secretary of State', 'Timothy Pickering', new Date(1795, 7, 20), new Date(1800, 4, 12)],
+      [ 'Secretary of State', 'Charles Lee', new Date(1800, 4, 13), new Date(1800, 5, 5)],
+      [ 'Secretary of State', 'John Marshall', new Date(1800, 5, 13), new Date(1801, 2, 4)],
+      [ 'Secretary of State', 'Levi Lincoln', new Date(1801, 2, 5), new Date(1801, 4, 1)],
+      [ 'Secretary of State', 'James Madison', new Date(1801, 4, 2), new Date(1809, 2, 3)]
+    ]);
 
-      var otherData = new google.visualization.DataTable();
-
-      otherData.addColumn('string', 'Task ID');
-      otherData.addColumn('string', 'Task Name');
-      otherData.addColumn('string', 'Resource');
-      otherData.addColumn('date', 'Start');
-      otherData.addColumn('date', 'End');
-      otherData.addColumn('number', 'Duration');
-      otherData.addColumn('number', 'Percent Complete');
-      otherData.addColumn('string', 'Dependencies');
-      // for (var i =0; i <joblen; i++){
-        
-      // }
-      otherData.addRows([
-        ['toTrain', 'Walk to train stop', 'walk', null, null, toMilliseconds(5), 100, null],
-        ['music', 'Listen to music', 'music', null, null, toMilliseconds(70), 100, null],
-        ['wait', 'Wait for train', 'wait', null, null, toMilliseconds(10), 100, 'toTrain'],
-        ['train', 'Train ride', 'train', null, null, toMilliseconds(45), 75, 'wait'],
-        ['toWork', 'Walk to work', 'walk', null, null, toMilliseconds(10), 0, 'train'],
-        ['work', 'Sit down at desk', null, null, null, toMilliseconds(2), 0, 'toWork'],
-
-      ]);
-
-      var options = {
-        height: 275,
-        gantt: {
-          defaultStartDateMillis: new Date(2015, 3, 28)
-        }
-      };
-
-      var chart = new google.visualization.Gantt(document.getElementById('chart_div'));
-
-      chart.draw(otherData, options);
-    }
-/*
+    chart.draw(dataTable);
+  }
+</script>
+<script type="text/javascript">
+  /*
     var fileInput = document.getElementById("csv"),
 
     readFile = function () {
@@ -181,6 +172,6 @@
 
 </p>
 <body>
-  <div id="chart_div"></div>
+  <div id="example3.1" style="height: 200px;"></div>
 </body>
 </html>
