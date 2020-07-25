@@ -22,8 +22,8 @@
     starts = [[0,5,10],[0,4,6]];
     runs = [[4,3,2],[2,2,2]];
     joblen = 2;
-    for (var i = 0; i < 2; i++) {
-      for (var j = 0; j< joblen; j++){
+    for (var i = 0; i < joblen ; i++) {
+      for (var j = 0; j< starts[i].length; j++){
        dataTable.addRows([['Mach ' +ops[i][j], 'Job '+i, new Date(starts[i][j]), new Date(starts[i][j]) ]]); 
       }
     }
@@ -73,10 +73,10 @@
                 reader.onload = function (e) {
                     var table = document.createElement("table");
                     var rows = e.target.result.split("\n");
-                    joblen = rows.length
+                    joblen = rows.length;
                     for (var i = 0; i < rows.length; i++) {
                         var cells = rows[i].split(",");
-                        starts[i] = cells
+                        starts[i] = cells;
                         if (cells.length > 1) {
                             var row = table.insertRow(-1);
                             for (var j = 0; j < cells.length; j++) {
@@ -108,7 +108,7 @@
                     var rows = e.target.result.split("\n");
                     for (var i = 0; i < rows.length; i++) {
                         var cells = rows[i].split(",");
-                        ops[i] = cells
+                        ops[i] = cells;
                         if (cells.length > 1) {
                             var row = table.insertRow(-1);
                             for (var j = 0; j < cells.length; j++) {
@@ -142,7 +142,7 @@
                     var rows = e.target.result.split("\n");
                     for (var i = 0; i < rows.length; i++) {
                         var cells = rows[i].split(",");
-                        runs[i] = cells
+                        runs[i] = cells;
                         if (cells.length > 1) {
                             var row = table.insertRow(-1);
                             for (var j = 0; j < cells.length; j++) {
