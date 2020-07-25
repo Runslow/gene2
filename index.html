@@ -60,7 +60,7 @@
     dataTable.addColumn({ type: 'string', id: 'Name' });
     dataTable.addColumn({ type: 'date', id: 'Start' });
     dataTable.addColumn({ type: 'date', id: 'End' });
-    joblen = 2;
+    /*joblen = 2;*/
     for (var i = 0; i < joblen ; i++) {
       for (var j = 0; j< starts[i].length; j++){
        dataTable.addRows([['Mach ' +ops[i][j], 'Job '+i, new Date(starts[i][j]), new Date(starts[i][j] +2)]]); 
@@ -190,9 +190,9 @@
                             }
                         }
                     }
-                    var dvCSV = document.getElementById("dvCSVr");
-                    dvCSV.innerHTML = "";
-                    dvCSV.appendChild(runs);
+                    var dvCSVr = document.getElementById("dvCSVr");
+                    dvCSVr.innerHTML = "";
+                    dvCSVr.appendChild(runs);
                 }
                 reader.readAsText(fileUpload.files[0]);
             } else {
